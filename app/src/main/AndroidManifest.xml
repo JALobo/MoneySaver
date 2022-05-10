@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneySaver">
         <activity
+            android:name=".ActivityTotalMonetario"
+            android:exported="false" />
+        <activity
             android:name=".ActivityMenuPrincipal"
             android:exported="false" />
         <activity

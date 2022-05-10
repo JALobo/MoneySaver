@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneySaver">
         <activity
+            android:name=".AtivityPoupancas"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityGerirDespesas"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityDespesas"
+            android:exported="false" />
+        <activity
             android:name=".ActivityTotalMonetario"
             android:exported="false" />
         <activity

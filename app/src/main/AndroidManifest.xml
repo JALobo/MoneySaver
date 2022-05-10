@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneySaver">
         <activity
+            android:name=".ActivityTotalMonetario"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMenuPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityReposicaPpassword"
+            android:exported="false" />
+        <activity
+            android:name=".ActividadePasswordEsquecida"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityRegisto"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityLogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

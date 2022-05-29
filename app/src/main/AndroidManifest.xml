@@ -25,7 +25,7 @@
             android:name=".ActivityMenuPrincipal"
             android:exported="false" />
         <activity
-            android:name=".ActivityReposicaPpassword"
+            android:name=".ActivityReposicaoPassword"
             android:exported="false" />
         <activity
             android:name=".ActividadePasswordEsquecida"

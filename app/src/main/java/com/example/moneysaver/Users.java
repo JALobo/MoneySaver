@@ -1,15 +1,16 @@
 package com.example.moneysaver;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Users {
     private String email;
     private String name;
     private String username;
     private String password;
-    private ArrayList<Expenses> expenses;
+    private Map expenses;
 
-    public Users(String email, String name, String username, String password, ArrayList<Expenses> expenses) {
+    public Users(String email, String name, String username, String password, Map expenses) {
         this.email = email;
         this.name = name;
         this.username = username;
@@ -53,11 +54,11 @@ public class Users {
         this.password = password;
     }
 
-    public ArrayList<Expenses> getExpenses() {
+    public Map getExpenses() {
         return expenses;
     }
 
-    public void setExpenses(ArrayList<Expenses> expenses) {
+    public void setExpenses(Map expenses) {
         this.expenses = expenses;
     }
 }

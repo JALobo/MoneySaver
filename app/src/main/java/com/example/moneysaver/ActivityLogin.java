@@ -82,5 +82,13 @@ public class ActivityLogin extends AppCompatActivity {
     private void goActivityMenuprincipal() {
         Intent menuPrincipal = new Intent(this, ActivityMenuPrincipal.class);
         startActivity(menuPrincipal);
+        ActivityLogin.this.finish();
+        Intent intent = new Intent("finish_activity_MainActivity");
+        sendBroadcast(intent);
+
     }
+
+   /* public void finishLogin(View v) {
+        ActivityLogin.this.finish();
+    }*/
 }

@@ -10,6 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneySaver">
         <activity
+            android:name=".AtivityPoupancas"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityGerirDespesas"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityDespesas"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityTotalMonetario"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMenuPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityReposicaoPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ActividadePasswordEsquecida"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityRegisto"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityLogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

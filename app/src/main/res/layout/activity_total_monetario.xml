@@ -21,7 +21,7 @@
         android:id="@+id/txtTotalInserido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="total"
+        android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -37,11 +37,11 @@
 
     <EditText
         android:id="@+id/txtValorInserir"
+        android:inputType="number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Valor a inserir"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"

@@ -60,21 +60,25 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     private void verifieLogin() {
+
         //Caso o username esteja errado
 
         boolean isAllowed=true;
 
-        if (!(txtUsername.getText().toString().equals(admin) )) {
+        Users user = SingletonCarregarDados.getUsers();
+        //TODO Pedir a lista de users da DB
+        if (!(txtUsername.getText().toString().equals(user.getUsername()) )) {
             Toast.makeText(context, "Utilizador errado", duration).show();
             isAllowed = false;
         }
         //caso a password esteja Errada
-        if (!(txtPassword.getText().toString().equals(password))) {
+        if (!(txtPassword.getText().toString().equals(user.getPassword()))) {
             Toast.makeText(context, "Password errada", duration).show();
             isAllowed = false;
         }
 
         if(isAllowed){
+            //TODO enviar o user para o singleton
         goActivityMenuprincipal();
         }
     }

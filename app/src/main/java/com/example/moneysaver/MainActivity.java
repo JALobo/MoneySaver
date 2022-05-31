@@ -10,15 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     Button botaoLogin, botaoRegistar ;
     BroadcastReceiver broadcastReceiver;
+    Users user;//Variavel de teste
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        criarUserTeste();//Apagar este método quando deixar de ser necessário
 
         botaoLogin = findViewById(R.id.btLogin);
         botaoRegistar =  findViewById(R.id.btRegistar);
@@ -67,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
     private void goActivityRegister(){
         Intent register = new Intent(this, ActivityRegisto.class);
         startActivity(register);
+    }
+
+    //para apagar quando o projeto tiver completo
+    public void criarUserTeste(){
+
+        Expenses expense = new Expenses();
+        HashMap <String, Expenses> expenses = new HashMap<String, Expenses>();
+        expenses.put("1",expense);
+        user = new Users("joao.andre.lobo@gmail.com","João Lobo", "Cysper","12345",20, expenses);
+        SingletonCarregarDados.setUsers(user);
     }
 
 }

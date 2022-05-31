@@ -39,4 +39,5 @@ public class Expenses {
     public void setValExpense(double valExpense) {
         this.valExpense = valExpense;
     }
+    //TODO adicionar metodos para retirar informações das despesas (Valor despesa)
 }

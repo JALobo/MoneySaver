@@ -11,13 +11,16 @@ import android.widget.TextView;
 
 public class ActivityDespesas extends AppCompatActivity {
 
+    //TODO https://abhiandroid.com/ui/listview
     Button btnVoltarEditDespesa, btnGerirDespesas;
     TextView txtTotalInserido, txtTotalDespesas;
     ListView despesaList;
+    String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
+
         btnVoltarEditDespesa=findViewById(R.id.btnVoltarEditDespesa);
         btnGerirDespesas=findViewById(R.id.btnGerirDespesas);
 
@@ -49,5 +52,9 @@ public class ActivityDespesas extends AppCompatActivity {
 
     private void voltar() {
         finish();
+    }
+
+    private void addListViewItems(/*TODO por os items que vai popular*/){
+
     }
 }

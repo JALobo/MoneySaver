@@ -1,6 +1,7 @@
 package com.example.moneysaver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Users {
@@ -8,13 +9,15 @@ public class Users {
     private String name;
     private String username;
     private String password;
-    private Map expenses;
+    private double moneyToSave;
+    private HashMap expenses;
 
-    public Users(String email, String name, String username, String password, Map expenses) {
+    public Users(String email, String name, String username, String password, double moneyToSave, HashMap expenses) {
         this.email = email;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.moneyToSave = moneyToSave;
         this.expenses = expenses;
     }
 
@@ -54,11 +57,21 @@ public class Users {
         this.password = password;
     }
 
-    public Map getExpenses() {
+    public double getMoneyToSave() {
+        return moneyToSave;
+    }
+
+    public void setMoneyToSave(double moneyToSave) {
+        this.moneyToSave = moneyToSave;
+    }
+
+    public HashMap getExpenses() {
         return expenses;
     }
 
-    public void setExpenses(Map expenses) {
+    public void setExpenses(HashMap expenses) {
         this.expenses = expenses;
     }
+
+    //TODO adicionar metodods que permitam retirar informação do user
 }

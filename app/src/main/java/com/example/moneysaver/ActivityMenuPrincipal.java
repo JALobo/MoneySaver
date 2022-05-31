@@ -15,9 +15,9 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        totalMonetario = findViewById(R.id.btnPoupancas);
-        despesas = findViewById(R.id.btnTotalMonetario);
-        poupancas = findViewById(R.id.btnDespesas);
+        totalMonetario = findViewById(R.id. btnTotalMonetario);
+        despesas = findViewById(R.id.btnDespesas);
+        poupancas = findViewById(R.id.btnPoupancas);
 
         totalMonetario.setOnClickListener(new View.OnClickListener() {
             @Override

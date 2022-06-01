@@ -54,7 +54,8 @@ public class ActivityLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Leva para o main menu on sucesseful login
-                verifieLogin();
+                //verifieLogin();
+                goActivityMenuprincipal();//mudar aqui
             }
         });
     }

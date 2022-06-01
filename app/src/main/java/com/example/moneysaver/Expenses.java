@@ -3,10 +3,10 @@ package com.example.moneysaver;
 public class Expenses {
     private String nameExpense;
     private String desExpense;
-    private double valExpense;
+    private String valExpense;
 
 
-    public Expenses(String nameExpense, String desExpense, double valExpense) {
+    public Expenses(String nameExpense, String desExpense, String valExpense) {
         this.nameExpense = nameExpense;
         this.desExpense = desExpense;
         this.valExpense = valExpense;
@@ -32,11 +32,11 @@ public class Expenses {
         this.desExpense = desExpense;
     }
 
-    public double getValExpense() {
+    public String getValExpense() {
         return valExpense;
     }
 
-    public void setValExpense(double valExpense) {
+    public void setValExpense(String valExpense) {
         this.valExpense = valExpense;
     }
     //TODO adicionar metodos para retirar informações das despesas (Valor despesa)

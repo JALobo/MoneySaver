@@ -7,29 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class ActivityDespesas extends AppCompatActivity {
 
-    Button btnVoltarEditDespesa, btnGerirDespesas;
+    Button btnVoltarEditDespesa, btnAdicionarDespesa;
     TextView txtTotalInserido, txtTotalDespesas;
     RecyclerView recyclerView;
-    ArrayList<Expenses> expenses = SingletonCarregarDados.getUsers().getExpenses();
-//TODO Ligar a database
-HelperAdapter helperAdapter;
-
-
+    ArrayList<Expenses> expenses;
+    //TODO Ligar a database
+    HelperAdapter helperAdapter;
+    // creating a variable
+    // for firebasefirestore.
+    private FirebaseFirestore db;
 
 
     @Override
@@ -37,9 +32,21 @@ HelperAdapter helperAdapter;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
 
+        expenses = new ArrayList<>();
+        Expenses expenses1 = new Expenses("Elden Ring", "Wolf husbando >_>", "60.0");
+        Expenses expenses2 = new Expenses("Chocolate", "I am fucking depressed", "1.10");
+        Expenses expenses3 = new Expenses("BD", "If you know, you know", "110.0");
+        expenses.add(expenses1);
+        expenses.add(expenses2);
+        expenses.add(expenses3);
+
+        // getting our instance
+        // from Firebase Firestore.
+        db = FirebaseFirestore.getInstance();
+
 
         btnVoltarEditDespesa = findViewById(R.id.btnVoltarEditDespesa);
-        btnGerirDespesas = findViewById(R.id.btnGerirDespesas);
+        btnAdicionarDespesa = findViewById(R.id.btnAdicionarDespesa);
 
         //TODO Inserir metodos para popular as TExtViews
         txtTotalDespesas = findViewById(R.id.txtTotalDespesas);
@@ -54,10 +61,6 @@ HelperAdapter helperAdapter;
         recyclerView.setAdapter(helperAdapter);
 
 
-
-
-
-
         //-----------------------
 
         btnVoltarEditDespesa.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +70,7 @@ HelperAdapter helperAdapter;
             }
         });
 
-        btnGerirDespesas.setOnClickListener(new View.OnClickListener() {
+        btnAdicionarDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goActivityGerirDespesas();
@@ -84,7 +87,7 @@ HelperAdapter helperAdapter;
         finish();
     }
 
-    private void addListViewItems(/*TODO por os items que vai popular*/) {
+    private void addDataToFirestore(Expenses expenses){
 
     }
 }

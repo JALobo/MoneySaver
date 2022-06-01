@@ -26,21 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".ActivityMenuPrincipal"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityReposicaoPassword"
-            android:exported="false" />
-        <activity
-            android:name=".ActividadePasswordEsquecida"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityRegisto"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityLogin"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +33,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActivityReposicaoPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ActividadePasswordEsquecida"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

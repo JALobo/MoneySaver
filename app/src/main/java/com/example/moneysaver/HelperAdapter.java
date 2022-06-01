@@ -32,7 +32,7 @@ public class HelperAdapter extends RecyclerView.Adapter {
         Expenses expenses = expensesArrayList.get(position);
         viewHolderClass.nomeExpense.setText(expenses.getNameExpense());
         viewHolderClass.descDespesa.setText(expenses.getDesExpense());
-        viewHolderClass.custoDespesa.setText(Double.toString(expenses.getValExpense()));
+        viewHolderClass.custoDespesa.setText(expenses.getValExpense());
 
     }
 

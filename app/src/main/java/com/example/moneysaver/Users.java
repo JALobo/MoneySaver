@@ -10,9 +10,9 @@ public class Users {
     private String username;
     private String password;
     private double moneyToSave;
-    private HashMap expenses;
+    private ArrayList<Expenses> expenses;
 
-    public Users(String email, String name, String username, String password, double moneyToSave, HashMap expenses) {
+    public Users(String email, String name, String username, String password, double moneyToSave, ArrayList<Expenses> expenses) {
         this.email = email;
         this.name = name;
         this.username = username;
@@ -65,11 +65,11 @@ public class Users {
         this.moneyToSave = moneyToSave;
     }
 
-    public HashMap getExpenses() {
+    public ArrayList<Expenses> getExpenses() {
         return expenses;
     }
 
-    public void setExpenses(HashMap expenses) {
+    public void setExpenses(ArrayList<Expenses> expenses) {
         this.expenses = expenses;
     }
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -76,11 +77,14 @@ public class MainActivity extends AppCompatActivity {
     //para apagar quando o projeto tiver completo
     public void criarUserTeste(){
 
-        Expenses expense = new Expenses();
-        HashMap <String, Expenses> expenses = new HashMap<String, Expenses>();
-        expenses.put("1",expense);
+        Expenses expenses1 = new Expenses("Elden Ring","Wolf husbando >_>",60.0);
+        Expenses expenses2 = new Expenses("Chocolate","I am fucking depressed",1.10);
+        Expenses expenses3 = new Expenses("BD","If you know, you know",110.0);
+        ArrayList<Expenses> expenses = new ArrayList<>();
+        expenses.add(expenses1);
+        expenses.add(expenses2);
+        expenses.add(expenses3);
         user = new Users("joao.andre.lobo@gmail.com","João Lobo", "Cysper","12345",20, expenses);
         SingletonCarregarDados.setUsers(user);
     }
-
 }

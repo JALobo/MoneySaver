@@ -64,7 +64,7 @@ public class ActivityGerirDespesas extends AppCompatActivity {
                     editTextValor.setError("Ponha um custo");
                 } else {
                     // calling method to add data to Firebase Firestore.
-                    addDataToFirestore(editTextTextNome.getText().toString(), editTextTextDescricao.toString(),editTextValor.toString() );
+                    addDataToFirestore(editTextTextNome.getText().toString(), editTextTextDescricao.getText().toString(),editTextValor.getText().toString() );
                 }
 
             }
@@ -76,14 +76,14 @@ public class ActivityGerirDespesas extends AppCompatActivity {
 
         // creating a collection reference
         // for our Firebase Firetore database.
-        CollectionReference dbCourses = db.collection("Expenses");
+        CollectionReference dbExpenses = db.collection("Expenses");
 
         // adding our data to our courses object class.
         //Courses courses = new Courses(courseName, courseDescription, courseDuration);
         Expenses expenses = new Expenses(nome,decricao,valor);
 
         // below method is use to add data to Firebase Firestore.
-        dbCourses.add(expenses).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        dbExpenses.add(expenses).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 // after the data addition is successful

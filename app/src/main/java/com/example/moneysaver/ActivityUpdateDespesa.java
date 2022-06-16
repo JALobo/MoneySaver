@@ -10,15 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ActivityUpdateDespesa extends AppCompatActivity {
     private EditText nomeUp, descUp, cusUp;
     private String nome, descricao, custo;
     private FirebaseFirestore db;
-    Button updateExpense, sair;
+    Button updateExpense, sair, apagar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class ActivityUpdateDespesa extends AppCompatActivity {
         cusUp = findViewById(R.id.editTextUpdateValor);
         updateExpense = findViewById(R.id.btnUpdateDespesa);
         sair = findViewById(R.id.btnVoldarUpdateDespesas);
+        apagar = findViewById(R.id.btnApagar);
 
         nomeUp.setText(expenses.getNameExpense());
         descUp.setText(expenses.getDesExpense());
@@ -54,6 +57,12 @@ public class ActivityUpdateDespesa extends AppCompatActivity {
                     updateExpenses(expenses, nome, descricao, custo);
                 }
 
+            }
+        });
+        apagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteExpense(expenses);
             }
         });
 
@@ -84,5 +93,19 @@ public class ActivityUpdateDespesa extends AppCompatActivity {
     }
     private void voltar() {
         finish();
+    }
+    private void deleteExpense(Expenses exp){
+        db.collection("Expenses").document(exp.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ActivityUpdateDespesa.this, "A despesa foi apagada", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    Toast.makeText(ActivityUpdateDespesa.this, "Ocorreu uma falha a apagar a despesa. ", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 }

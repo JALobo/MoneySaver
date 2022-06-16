@@ -3,15 +3,10 @@ package com.example.moneysaver;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,26 +15,22 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-
 public class ActivityGerirDespesas extends AppCompatActivity {
 
     EditText editTextTextNome,editTextTextDescricao,editTextValor;
     Button btnAdicionarDespesa, btnVoldarGerirDespesas;
 
-    //TODO Substituir isto depois pelo o que que vem da base de dados
-    //Para ter o ListView a funcionar
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerir_despesas);
-        btnAdicionarDespesa = findViewById(R.id.btnAdicionarDespesa);
-        btnVoldarGerirDespesas = findViewById(R.id.btnVoldarGerirDespesas);
-        editTextTextNome =  findViewById(R.id.editTextTextNome);
-        editTextTextDescricao = findViewById(R.id.editTextTextDescricao);
-        editTextValor = findViewById(R.id.editTextValor);
+        btnAdicionarDespesa = findViewById(R.id.btnUpdateDespesa);
+        btnVoldarGerirDespesas = findViewById(R.id.btnVoldarUpdateDespesas);
+        editTextTextNome =  findViewById(R.id.editTextUpdateNome);
+        editTextTextDescricao = findViewById(R.id.editTextUpdateDescricao);
+        editTextValor = findViewById(R.id.editTextUpdateValor);
 
         // getting our instance
         // from Firebase Firestore.

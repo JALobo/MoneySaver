@@ -1,5 +1,7 @@
 package com.example.moneysaver;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class HelperAdapter extends RecyclerView.Adapter {
 
     ArrayList<Expenses> expensesArrayList;
+    Context context;
 
-    public HelperAdapter(ArrayList<Expenses> expensesArrayList) {
+    public HelperAdapter(ArrayList<Expenses> expensesArrayList, Context context) {
         this.expensesArrayList = expensesArrayList;
+        this.context = context;
     }
 
     @NonNull
@@ -40,7 +45,8 @@ public class HelperAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return expensesArrayList.size();
     }
-    public class ViewHolderClass extends RecyclerView.ViewHolder{
+
+    public class ViewHolderClass extends RecyclerView.ViewHolder  {//TODO update
         TextView nomeExpense, descDespesa, custoDespesa;
 
         public ViewHolderClass(@NonNull View itemView) {
@@ -48,6 +54,18 @@ public class HelperAdapter extends RecyclerView.Adapter {
             nomeExpense = itemView.findViewById(R.id.nomeExpense);
             descDespesa = itemView.findViewById(R.id.descDespesa);
             custoDespesa = itemView.findViewById(R.id.custoDespesa);
+            //Para ser possivel clickar nas despesas
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {//Para fazer update á despesa
+                    Expenses expenses = expensesArrayList.get(getAdapterPosition());
+                    Intent updateDespesas = new Intent(context, ActivityUpdateDespesa.class);
+                    updateDespesas.putExtra("expenses", expenses);
+                    context.startActivity(updateDespesas);
+                }
+            });
         }
+
+
     }
 }

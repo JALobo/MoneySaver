@@ -28,7 +28,6 @@ public class ActivityDespesas extends AppCompatActivity {
     TextView txtTotalInserido, txtTotalDespesas;
     RecyclerView recyclerView;
     ArrayList<Expenses> expenses;
-    //TODO Ligar a database
     HelperAdapter helperAdapter;
     // creating a variable
     // for firebasefirestore.
@@ -42,24 +41,23 @@ public class ActivityDespesas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
         loadingPB = findViewById(R.id.idProgressBar);
-
         expenses = new ArrayList<>();
-        Expenses expenses1 = new Expenses("Elden Ring", "Wolf husbando >_>", "60.0");
+
+        /*Expenses expenses1 = new Expenses("Elden Ring", "Wolf husbando >_>", "60.0");
         Expenses expenses2 = new Expenses("Chocolate", "I am fucking depressed", "1.10");
         Expenses expenses3 = new Expenses("BD", "If you know, you know", "110.0");
         expenses.add(expenses1);
         expenses.add(expenses2);
-        expenses.add(expenses3);
+        expenses.add(expenses3);*/
 
         // getting our instance
         // from Firebase Firestore.
-        db = FirebaseFirestore.getInstance();
+
 
 
         btnVoltarEditDespesa = findViewById(R.id.btnVoltarEditDespesa);
-        btnAdicionarDespesa = findViewById(R.id.btnAdicionarDespesa);
+        btnAdicionarDespesa = findViewById(R.id.btnUpdateDespesa);
 
-        //TODO Inserir metodos para popular as TExtViews
         txtTotalDespesas = findViewById(R.id.txtTotalDespesas);
         txtTotalInserido = findViewById(R.id.txtTotalInserido);
 
@@ -68,13 +66,53 @@ public class ActivityDespesas extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        helperAdapter = new HelperAdapter(expenses);
+        helperAdapter = new HelperAdapter(expenses, this);
         recyclerView.setAdapter(helperAdapter);
 
 
         //-----------------------
 
+        btnVoltarEditDespesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                voltar();
+            }
+        });
+
+        btnAdicionarDespesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goActivityGerirDespesas();
+            }
+        });
+
+
+
+
+
+    }
+
+    private void goActivityGerirDespesas() {
+        Intent gerirDespesas = new Intent(this, ActivityGerirDespesas.class);
+        startActivity(gerirDespesas);
+    }
+
+    private void voltar() {
+        finish();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         //Por a firebase a funcionar---------------------
+
+        //int size = expenses.size();
+        //expenses.clear();
+        //helperAdapter.notifyItemRangeRemoved(0, size);
+
+        expenses.clear();
+        db = FirebaseFirestore.getInstance();
         db.collection("Expenses").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -91,6 +129,10 @@ public class ActivityDespesas extends AppCompatActivity {
                         // after getting this list we are passing
                         // that list to our object class.
                         Expenses e = d.toObject(Expenses.class);
+                        // below is the updated line of code which we have to
+                        // add to pass the document id inside our modal class.
+                        // we are setting our document id with d.getId() method
+                        e.setId(d.getId());
 
                         // and we will pass this object class
                         // inside our arraylist which we have
@@ -114,34 +156,6 @@ public class ActivityDespesas extends AppCompatActivity {
                 Toast.makeText(ActivityDespesas.this, "Falha ao descarregar dados.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        //---------------------
-
-        btnVoltarEditDespesa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voltar();
-            }
-        });
-
-        btnAdicionarDespesa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goActivityGerirDespesas();
-            }
-        });
-    }
-
-    private void goActivityGerirDespesas() {
-        Intent gerirDespesas = new Intent(this, ActivityGerirDespesas.class);
-        startActivity(gerirDespesas);
-    }
-
-    private void voltar() {
-        finish();
-    }
-
-    private void addDataToFirestore(Expenses expenses) {
 
     }
 }

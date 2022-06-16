@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.moneysaver">
-    <!--Permissions for internet-->
+    <!-- Permissions for internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -22,7 +22,10 @@
             android:name=".ActivityDespesas"
             android:exported="false" />
         <activity
-            android:name=".ActivityTotalMonetario"
+        android:name=".ActivityTotalMonetario"
+        android:exported="false" />
+        <activity
+            android:name=".ActivityUpdateDespesa"
             android:exported="false" />
         <activity
             android:name=".ActivityMenuPrincipal"
@@ -41,7 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

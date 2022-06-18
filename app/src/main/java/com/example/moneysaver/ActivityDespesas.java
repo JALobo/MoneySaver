@@ -24,16 +24,17 @@ import java.util.List;
 
 public class ActivityDespesas extends AppCompatActivity {
 
-    Button btnVoltarEditDespesa, btnAdicionarDespesa;
-    TextView txtTotalInserido, txtTotalDespesas;
-    RecyclerView recyclerView;
-    ArrayList<Expenses> expenses;
-    HelperAdapter helperAdapter;
+    private Double totalValDespesa,valorFinal;//Valores declarados aqui para evitar quebrar o programa
+    private Button btnVoltarEditDespesa, btnAdicionarDespesa;
+    private TextView txtTotalInserido, txtTotalDespesas,txtTotalFinal;
+    private RecyclerView recyclerView;
+    private ArrayList<Expenses> expenses;
+    private HelperAdapter helperAdapter;
     // creating a variable
     // for firebasefirestore.
     private FirebaseFirestore db;
 
-    ProgressBar loadingPB;
+    private ProgressBar loadingPB;
 
 
     @Override
@@ -43,23 +44,12 @@ public class ActivityDespesas extends AppCompatActivity {
         loadingPB = findViewById(R.id.idProgressBar);
         expenses = new ArrayList<>();
 
-        /*Expenses expenses1 = new Expenses("Elden Ring", "Wolf husbando >_>", "60.0");
-        Expenses expenses2 = new Expenses("Chocolate", "I am fucking depressed", "1.10");
-        Expenses expenses3 = new Expenses("BD", "If you know, you know", "110.0");
-        expenses.add(expenses1);
-        expenses.add(expenses2);
-        expenses.add(expenses3);*/
-
-        // getting our instance
-        // from Firebase Firestore.
-
-
-
         btnVoltarEditDespesa = findViewById(R.id.btnVoltarEditDespesa);
         btnAdicionarDespesa = findViewById(R.id.btnUpdateDespesa);
 
         txtTotalDespesas = findViewById(R.id.txtTotalDespesas);
         txtTotalInserido = findViewById(R.id.txtTotalInserido);
+        txtTotalFinal = findViewById(R.id.txtTotalFinal);
 
 
         //----------Tentativa de por o Recicler view  a funcionar-------------
@@ -110,8 +100,10 @@ public class ActivityDespesas extends AppCompatActivity {
         //int size = expenses.size();
         //expenses.clear();
         //helperAdapter.notifyItemRangeRemoved(0, size);
-
+        txtTotalInserido.setText(SaveDividaETotal.getTotal());
         expenses.clear();
+        totalValDespesa = 0.0;
+        valorFinal = 0.0;
         db = FirebaseFirestore.getInstance();
         db.collection("Expenses").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -138,7 +130,12 @@ public class ActivityDespesas extends AppCompatActivity {
                         // inside our arraylist which we have
                         // created for recycler view.
                         expenses.add(e);
+                        totalValDespesa += Double.parseDouble(e.getValExpense());
                     }
+                    SaveDividaETotal.setDivida(totalValDespesa.toString());
+                    txtTotalDespesas.setText(totalValDespesa.toString());
+                    valorFinal = Double.parseDouble(SaveDividaETotal.getTotal()) - totalValDespesa;
+                    txtTotalFinal.setText(valorFinal.toString());
                     // after adding the data to recycler view.
                     // we are calling recycler view notifuDataSetChanged
                     // method to notify that data has been changed in recycler view.
@@ -156,6 +153,7 @@ public class ActivityDespesas extends AppCompatActivity {
                 Toast.makeText(ActivityDespesas.this, "Falha ao descarregar dados.", Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 }

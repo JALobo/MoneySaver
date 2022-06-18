@@ -7,16 +7,6 @@
     tools:context=".ActivityMenuPrincipal">
 
     <Button
-        android:id="@+id/btnPoupancas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Poupanças"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDespesas" />
-
-    <Button
         android:id="@+id/btnTotalMonetario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Despesas"
-        app:layout_constraintBottom_toTopOf="@+id/btnPoupancas"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTotalMonetario" />

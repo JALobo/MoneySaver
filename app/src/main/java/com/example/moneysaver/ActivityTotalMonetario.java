@@ -55,13 +55,14 @@ public class ActivityTotalMonetario extends AppCompatActivity {
 
 
         //inserir valor monetário no programa. Enviar tamebm para a base de dados o valor inserido
-        valorInserido = txtValorInserir.getText().toString();
-        Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
-        if (valorInserido != null) {
 
+        if (!txtValorInserir.getText().toString().equals("")) {
+            valorInserido = txtValorInserir.getText().toString();
+            Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
             Double temp = Double.parseDouble(valorInserido) + valorexistente;
             txtTotalInserido.setText(temp.toString());
             //TODO enviar o valor para a base de dados que por sua ves faz update á singleton
+            SaveDividaETotal.setTotal(temp.toString());
         } else {
             Toast.makeText(getApplicationContext(), "Insira um valor a acrescentar", Toast.LENGTH_SHORT).show();
         }
@@ -70,9 +71,10 @@ public class ActivityTotalMonetario extends AppCompatActivity {
 
     private void retirarValorMonetario() {
         //TODO Retirar valor monetário no programa. Enviar tamebm para a base de dados o valor retirado e atualizar na textView
-        valorInserido = txtValorInserir.getText().toString();
-        Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
-        if (valorInserido != null) {
+
+        if (!txtValorInserir.getText().toString().equals("")) {
+            valorInserido = txtValorInserir.getText().toString();
+            Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
 
             Double temp = valorexistente - Double.parseDouble(valorInserido);
             if (temp < 0) {
@@ -81,7 +83,7 @@ public class ActivityTotalMonetario extends AppCompatActivity {
             } else {
                 txtTotalInserido.setText(temp.toString());
             }
-
+            SaveDividaETotal.setTotal(temp.toString());
             //TODO enviar o valor para a base de dados que por sua ves faz update á singleton
         } else {
             Toast.makeText(getApplicationContext(), "Insira um valor a retirar", Toast.LENGTH_SHORT).show();

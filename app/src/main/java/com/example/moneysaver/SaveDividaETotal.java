@@ -1,8 +1,8 @@
 package com.example.moneysaver;
 
 public class SaveDividaETotal {
-    private static String divida;
-    private static String total;
+    private static String divida = "0.0";
+    private static String total = "0.0";
 
     public static String getDivida() {
         return divida;

@@ -24,9 +24,9 @@ import java.util.List;
 
 public class ActivityDespesas extends AppCompatActivity {
 
-    private Double totalValDespesa,valorFinal;//Valores declarados aqui para evitar quebrar o programa
+    private Double totalValDespesa;//Valores declarados aqui para evitar quebrar o programa
     private Button btnVoltarEditDespesa, btnAdicionarDespesa;
-    private TextView txtTotalInserido, txtTotalDespesas,txtTotalFinal;
+    private TextView txtTotalInserido, txtTotalDespesas, txtTotalFinal;
     private RecyclerView recyclerView;
     private ArrayList<Expenses> expenses;
     private HelperAdapter helperAdapter;
@@ -59,7 +59,6 @@ public class ActivityDespesas extends AppCompatActivity {
         helperAdapter = new HelperAdapter(expenses, this);
         recyclerView.setAdapter(helperAdapter);
 
-
         //-----------------------
 
         btnVoltarEditDespesa.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +75,6 @@ public class ActivityDespesas extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
 
     private void goActivityGerirDespesas() {
@@ -91,19 +86,14 @@ public class ActivityDespesas extends AppCompatActivity {
         finish();
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
         //Por a firebase a funcionar---------------------
-
-        //int size = expenses.size();
-        //expenses.clear();
-        //helperAdapter.notifyItemRangeRemoved(0, size);
-        txtTotalInserido.setText(SaveDividaETotal.getTotal());
+        txtTotalInserido.setText(SaveDividaETotal.getTotalFormated());
         expenses.clear();
         totalValDespesa = 0.0;
-        valorFinal = 0.0;
+        //valorFinal = 0.0;
         db = FirebaseFirestore.getInstance();
         db.collection("Expenses").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -133,9 +123,10 @@ public class ActivityDespesas extends AppCompatActivity {
                         totalValDespesa += Double.parseDouble(e.getValExpense());
                     }
                     SaveDividaETotal.setDivida(totalValDespesa.toString());
-                    txtTotalDespesas.setText(totalValDespesa.toString());
-                    valorFinal = Double.parseDouble(SaveDividaETotal.getTotal()) - totalValDespesa;
-                    txtTotalFinal.setText(valorFinal.toString());
+                    txtTotalDespesas.setText(SaveDividaETotal.getDividaFormated());
+                   //valorFinal = Double.parseDouble(SaveDividaETotal.getTotal()) - totalValDespesa;
+                    //txtTotalFinal.setText(valorFinal.toString());
+                    txtTotalFinal.setText(SaveDividaETotal.getValorFinal());
                     // after adding the data to recycler view.
                     // we are calling recycler view notifuDataSetChanged
                     // method to notify that data has been changed in recycler view.

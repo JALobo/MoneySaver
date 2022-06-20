@@ -27,6 +27,8 @@ public class ActivityTotalMonetario extends AppCompatActivity {
         txtValorInserir = findViewById(R.id.txtValorInserir);
         txtTotalInserido = findViewById(R.id.txtTotalInserido);
 
+        txtTotalInserido.setText(SaveDividaETotal.getTotal());
+
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,14 +55,15 @@ public class ActivityTotalMonetario extends AppCompatActivity {
 
     private void inserirValorMonetario() {
 
-
-        //inserir valor monetário no programa. Enviar tamebm para a base de dados o valor inserido
-
         if (!txtValorInserir.getText().toString().equals("")) {
+            //Vai buscar o valor inserido no EditText
             valorInserido = txtValorInserir.getText().toString();
-            Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
+            //Vai buscar o valor dentro da classe SaveDividaEtotal
+            Double valorexistente = Double.parseDouble(SaveDividaETotal.getTotal());
+            //faz a conta dos valores
             Double temp = Double.parseDouble(valorInserido) + valorexistente;
-            txtTotalInserido.setText(temp.toString());
+            //converte em euros
+            txtTotalInserido.setText(SaveDividaETotal.formatCurrency(temp));
             //TODO enviar o valor para a base de dados que por sua ves faz update á singleton
             SaveDividaETotal.setTotal(temp.toString());
         } else {
@@ -73,15 +76,16 @@ public class ActivityTotalMonetario extends AppCompatActivity {
         //TODO Retirar valor monetário no programa. Enviar tamebm para a base de dados o valor retirado e atualizar na textView
 
         if (!txtValorInserir.getText().toString().equals("")) {
+
             valorInserido = txtValorInserir.getText().toString();
-            Double valorexistente = Double.parseDouble(txtTotalInserido.getText().toString());
+            Double valorexistente = Double.parseDouble(SaveDividaETotal.getTotal());
 
             Double temp = valorexistente - Double.parseDouble(valorInserido);
             if (temp < 0) {
                 Toast.makeText(getApplicationContext(), "Valor não pode dar negativo. O valor total foi colocado a 0.", Toast.LENGTH_SHORT).show();
-                txtTotalInserido.setText("0");
+                txtTotalInserido.setText(SaveDividaETotal.formatCurrency(0.0));
             } else {
-                txtTotalInserido.setText(temp.toString());
+                txtTotalInserido.setText(SaveDividaETotal.formatCurrency(temp));
             }
             SaveDividaETotal.setTotal(temp.toString());
             //TODO enviar o valor para a base de dados que por sua ves faz update á singleton

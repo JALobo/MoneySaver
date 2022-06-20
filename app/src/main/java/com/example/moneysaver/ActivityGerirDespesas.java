@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -71,7 +72,11 @@ public class ActivityGerirDespesas extends AppCompatActivity {
 
         // adding our data to our courses object class.
         //Courses courses = new Courses(courseName, courseDescription, courseDuration);
-        Expenses expenses = new Expenses(nome,decricao,valor);
+        //Vai buscar o utilizador autenticado de momentos
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
+
+        Expenses expenses = new Expenses(nome,decricao,valor,uid);
 
         // below method is use to add data to Firebase Firestore.
         dbExpenses.add(expenses).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

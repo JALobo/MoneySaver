@@ -14,19 +14,29 @@
         android:theme="@style/Theme.MoneySaver">
         <activity
             android:name=".ActivityGerirDespesas"
-            android:exported="false" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityDespesas"
-            android:exported="false" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-        android:name=".ActivityTotalMonetario"
-        android:exported="false" />
+            android:name=".ActivityTotalMonetario"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityUpdateDespesa"
-            android:exported="false" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityMenuPrincipal"
-            android:exported="true">
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,13 +45,20 @@
         </activity>
         <activity
             android:name=".ActivityReposicaoPassword"
-            android:exported="false" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActividadePasswordEsquecida"
-            android:exported="false" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
+
 
 </manifest>

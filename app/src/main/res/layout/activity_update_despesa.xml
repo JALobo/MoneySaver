@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityGerirDespesas">
+    tools:context=".ActivityUpdateDespesa">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -20,9 +20,10 @@
         android:id="@+id/btnUpdateDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar Despesa"
+        android:text="Atualizar Despesa"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnApagar"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
@@ -83,4 +84,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUpdateDescricao" />
+
+    <Button
+        android:id="@+id/btnApagar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apagar"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdateDespesa"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

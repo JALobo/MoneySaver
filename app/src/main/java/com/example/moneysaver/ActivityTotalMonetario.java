@@ -27,7 +27,7 @@ public class ActivityTotalMonetario extends AppCompatActivity {
         txtValorInserir = findViewById(R.id.txtValorInserir);
         txtTotalInserido = findViewById(R.id.txtTotalInserido);
 
-        txtTotalInserido.setText(SaveDividaETotal.getTotal());
+        txtTotalInserido.setText(SaveDividaETotal.getTotalFormated());
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override

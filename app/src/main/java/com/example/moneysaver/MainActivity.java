@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     //Users user;//Variavel de teste
     Expenses exp;
 
+    //Fuck Android studio
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

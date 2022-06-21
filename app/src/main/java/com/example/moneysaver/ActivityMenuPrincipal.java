@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class ActivityMenuPrincipal extends AppCompatActivity {
 
-    Button totalMonetario, despesas, poupancas;
+    Button totalMonetario, despesas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,6 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
         totalMonetario = findViewById(R.id. btnTotalMonetario);
         despesas = findViewById(R.id.btnDespesas);
-        poupancas = findViewById(R.id.btnPoupancas);
 
         totalMonetario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,14 +34,6 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
             }
         });
 
-        poupancas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent das poupancas
-                goActivityPopancas();
-            }
-        });
-
     }
 
 
@@ -56,9 +47,5 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
         startActivity(despesas);
     }
 
-    private void goActivityPopancas() {
-        Intent popancas = new Intent(this, AtivityPoupancas.class);
-        startActivity(popancas);
-    }
 
 }

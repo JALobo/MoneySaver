@@ -1,99 +1,98 @@
 package com.example.moneysaver;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ActivityLogin extends AppCompatActivity {
-
-
-    Button btnPasswordEsquecida, btnEntrar;
-    EditText txtUsername, txtPassword;
-    String admin, password;
-
-    // to get Context
-    Context context;
-    // toast time duration, can also set manual value
-    int duration;
+    Button entrar;
+    EditText email, password;
+    private FirebaseAuth mAuth;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        entrar = findViewById(R.id.btnEntrar);
+        email = findViewById(R.id.txtUsername);
+        password = findViewById(R.id.txtPassword);
 
-        context = getApplicationContext();
-        duration = Toast.LENGTH_SHORT;
+        mAuth = FirebaseAuth.getInstance();
 
-        //Variaveis de developer
-        admin = "admin";
-        password = "admin";
 
-        //Butões
-        btnPasswordEsquecida = findViewById(R.id.btnPasswordEsquecida);
-        btnEntrar = findViewById(R.id.btnEntrar);
-        txtUsername = findViewById(R.id.txtUsername);
-        txtPassword = findViewById(R.id.txtPassword);
-
-        //Botão passwoard Esquecida
-        btnPasswordEsquecida.setOnClickListener(new View.OnClickListener() {
+        entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Leva para o intent da passwaord esquecida (Ver se vai dar para fazer)
+
+                loginUserAccount();
+
             }
         });
 
-        //Botão entrar
-        btnEntrar.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void loginUserAccount() {
+
+        String email, password;
+        email = this.email.getText().toString();
+        password = this.password.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(),
+                            "Por favor escreva email!!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(),
+                            "Por favor escreva password!!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View view) {
-                //Leva para o main menu on sucesseful login
-                //verifieLogin();
-                goActivityMenuprincipal();//mudar aqui
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(),
+                                    "Login successful!!",
+                                    Toast.LENGTH_LONG)
+                            .show();
+
+                    // if sign-in is successful
+                    // intent to home activity
+                    Intent intent
+                            = new Intent(ActivityLogin.this,
+                            ActivityMenuPrincipal.class);
+                    startActivity(intent);
+                } else {
+
+                    // sign-in failed
+                    Toast.makeText(getApplicationContext(),
+                                    "Login failed!!",
+                                    Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
-    }
 
-    private void verifieLogin() {
-
-        //Caso o username esteja errado
-
-        boolean isAllowed=true;
-
-        Users user = SingletonCarregarDados.getUsers();
-        //TODO Pedir a lista de users da DB
-        if (!(txtUsername.getText().toString().equals(user.getUsername()) )) {
-            Toast.makeText(context, "Utilizador errado", duration).show();
-            isAllowed = false;
-        }
-        //caso a password esteja Errada
-        if (!(txtPassword.getText().toString().equals(user.getPassword()))) {
-            Toast.makeText(context, "Password errada", duration).show();
-            isAllowed = false;
-        }
-
-        if(isAllowed){
-            //TODO enviar o user para o singleton
-        goActivityMenuprincipal();
-        }
-    }
-
-    private void goActivityMenuprincipal() {
-        Intent menuPrincipal = new Intent(this, ActivityMenuPrincipal.class);
-        startActivity(menuPrincipal);
-        ActivityLogin.this.finish();
-        Intent intent = new Intent("finish_activity_MainActivity");
-        sendBroadcast(intent);
 
     }
-
-   /* public void finishLogin(View v) {
-        ActivityLogin.this.finish();
-    }*/
 }

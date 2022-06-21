@@ -1,10 +1,27 @@
 package com.example.moneysaver;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Users {
+    // getter method for our id
+    public String getId() {
+        return id;
+    }
+
+    // setter method for our id
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // we are using exclude because
+    // we are not saving our id
+    @Exclude
+    private String id;
+
     private String email;
     private String name;
     private String username;

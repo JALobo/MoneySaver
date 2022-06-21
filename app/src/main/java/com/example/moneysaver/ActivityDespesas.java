@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -94,8 +95,10 @@ public class ActivityDespesas extends AppCompatActivity {
         expenses.clear();
         totalValDespesa = 0.0;
         //valorFinal = 0.0;
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
         db = FirebaseFirestore.getInstance();
-        db.collection("Expenses").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Expenses").whereEqualTo("userId",uid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 // after getting the data we are calling on success method
@@ -132,6 +135,7 @@ public class ActivityDespesas extends AppCompatActivity {
                     // method to notify that data has been changed in recycler view.
                     helperAdapter.notifyDataSetChanged();
                 } else {
+                    loadingPB.setVisibility(View.GONE);
                     // if the snapshot is empty we are displaying a toast message.
                     Toast.makeText(ActivityDespesas.this, "Não foram encontrados dados", Toast.LENGTH_SHORT).show();
                 }

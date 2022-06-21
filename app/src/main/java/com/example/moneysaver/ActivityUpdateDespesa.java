@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ActivityUpdateDespesa extends AppCompatActivity {
@@ -76,7 +77,11 @@ public class ActivityUpdateDespesa extends AppCompatActivity {
 
 
     private void updateExpenses(Expenses expe, String nome, String descricao, String valor) {
-        Expenses updatedExpense = new Expenses(nome, descricao, valor);
+        //Para saber qual a atualizar
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
+
+        Expenses updatedExpense = new Expenses(nome, descricao, valor,uid);
         db.collection("Expenses").document(expe.getId()).set(updatedExpense).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

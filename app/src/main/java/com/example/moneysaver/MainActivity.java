@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Intent do login
-                //goActivityLogin();
+                goActivityLogin();
             }
         });
         //Botão para ir para a actividade de registo
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Intent do registar
-                //goActivityRegister();
+                goActivityRegister();
             }
         });
 
@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void goActivityLogin() {
+        Intent login = new Intent(this, ActivityLogin.class);
+        startActivity(login);
+    }
+
+    private void goActivityRegister() {
+        Intent registo = new Intent(this, ActivityRegisto.class);
+        startActivity(registo);
+    }
 
 
 }

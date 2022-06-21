@@ -8,6 +8,7 @@ public class Expenses implements Serializable {
     private String nameExpense;
     private String desExpense;
     private String valExpense;
+    private String userId;
 
     // getter method for our id
     public String getId() {
@@ -25,10 +26,17 @@ public class Expenses implements Serializable {
     private String id;
 
 
-    public Expenses(String nameExpense, String desExpense, String valExpense) {
+    /*public Expenses(String nameExpense, String desExpense, String valExpense) {
         this.nameExpense = nameExpense;
         this.desExpense = desExpense;
         this.valExpense = valExpense;
+    }*/
+
+    public Expenses(String nameExpense, String desExpense, String valExpense, String userId) {
+        this.nameExpense = nameExpense;
+        this.desExpense = desExpense;
+        this.valExpense = valExpense;
+        this.userId = userId;
     }
 
     //Construtor vazio just because
@@ -55,4 +63,15 @@ public class Expenses implements Serializable {
         return valExpense;
     }
 
+    public void setValExpense(String valExpense) {
+        this.valExpense = valExpense;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }

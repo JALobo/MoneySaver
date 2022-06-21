@@ -31,11 +31,11 @@ public class ActivityUpdateDespesa extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         nomeUp = findViewById(R.id.editTextUpdateNome);
-        descUp = findViewById(R.id.editTextUpdateDescricao);
-        cusUp = findViewById(R.id.editTextUpdateValor);
-        updateExpense = findViewById(R.id.btnUpdateDespesa);
-        sair = findViewById(R.id.btnVoldarUpdateDespesas);
-        apagar = findViewById(R.id.btnApagar);
+        descUp = findViewById(R.id.editTextUpdateDescicao);
+        cusUp = findViewById(R.id.editTextUpdateCusto);
+        updateExpense = findViewById(R.id.btnAtualizarDespesa);
+        sair = findViewById(R.id.btnVoltarAtualizarDespesa);
+        apagar = findViewById(R.id.btnApagarDespesa);
 
         nomeUp.setText(expenses.getNameExpense());
         descUp.setText(expenses.getDesExpense());

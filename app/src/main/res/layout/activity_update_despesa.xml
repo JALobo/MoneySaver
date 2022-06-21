@@ -18,18 +18,18 @@
 
 
     <Button
-        android:id="@+id/btnUpdateDespesa"
+        android:id="@+id/btnAtualizarDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Atualizar Despesa"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/btnApagar"
+        app:layout_constraintEnd_toStartOf="@+id/btnApagarDespesa"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <Button
-        android:id="@+id/btnVoldarUpdateDespesas"
+        android:id="@+id/btnVoltarAtualizarDespesa"
         android:layout_width="176dp"
         android:layout_height="53dp"
         android:text="Voltar"
@@ -55,26 +55,26 @@
         android:hint="Nome"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateDescricao"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateDescicao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextUpdateDescricao"
+        android:id="@+id/editTextUpdateDescicao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Descrição"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateValor"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateCusto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUpdateNome" />
 
     <EditText
-        android:id="@+id/editTextUpdateValor"
+        android:id="@+id/editTextUpdateCusto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -83,19 +83,18 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateDescicao" />
 
     <Button
-        android:id="@+id/btnApagar"
+        android:id="@+id/btnApagarDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apagar"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnUpdateDespesa"
+        app:layout_constraintStart_toEndOf="@+id/btnAtualizarDespesa"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

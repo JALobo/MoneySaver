@@ -27,11 +27,11 @@ public class ActivityGerirDespesas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerir_despesas);
-        btnAdicionarDespesa = findViewById(R.id.btnUpdateDespesa);
-        btnVoldarGerirDespesas = findViewById(R.id.btnVoldarUpdateDespesas);
-        editTextTextNome =  findViewById(R.id.editTextUpdateNome);
-        editTextTextDescricao = findViewById(R.id.editTextUpdateDescricao);
-        editTextValor = findViewById(R.id.editTextUpdateValor);
+        btnAdicionarDespesa = findViewById(R.id.btnAdicionar);
+        btnVoldarGerirDespesas = findViewById(R.id.btnVoltarAdicionarDespesa);
+        editTextTextNome =  findViewById(R.id.editTextAdicionarNome);
+        editTextTextDescricao = findViewById(R.id.editTextAdicionarDescricao);
+        editTextValor = findViewById(R.id.editTextAdicionarCusto);
 
         // getting our instance
         // from Firebase Firestore.

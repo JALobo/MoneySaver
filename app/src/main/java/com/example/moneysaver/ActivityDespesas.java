@@ -26,7 +26,7 @@ import java.util.List;
 public class ActivityDespesas extends AppCompatActivity {
 
     private Double totalValDespesa;//Valores declarados aqui para evitar quebrar o programa
-    private Button btnVoltarEditDespesa, btnAdicionarDespesa;
+    private Button btnVoltarDespesa, btnAdicionarDespesa;
     private TextView txtTotalInserido, txtTotalDespesas, txtTotalFinal;
     private RecyclerView recyclerView;
     private ArrayList<Expenses> expenses;
@@ -45,8 +45,8 @@ public class ActivityDespesas extends AppCompatActivity {
         loadingPB = findViewById(R.id.idProgressBar);
         expenses = new ArrayList<>();
 
-        btnVoltarEditDespesa = findViewById(R.id.btnVoltarEditDespesa);
-        btnAdicionarDespesa = findViewById(R.id.btnUpdateDespesa);
+        btnVoltarDespesa = findViewById(R.id.btnVoltarDespesa);
+        btnAdicionarDespesa = findViewById(R.id.btnAdicionarDespesa);
 
         txtTotalDespesas = findViewById(R.id.txtTotalDespesas);
         txtTotalInserido = findViewById(R.id.txtTotalInserido);
@@ -62,7 +62,7 @@ public class ActivityDespesas extends AppCompatActivity {
 
         //-----------------------
 
-        btnVoltarEditDespesa.setOnClickListener(new View.OnClickListener() {
+        btnVoltarDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 voltar();

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button botaoLogin, botaoRegistar ;
     BroadcastReceiver broadcastReceiver;
-    //Users user;//Variavel de teste
+    //Users user; //Variavel de teste
     Expenses exp;
 
     //Fuck Android studio

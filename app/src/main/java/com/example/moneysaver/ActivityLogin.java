@@ -40,6 +40,7 @@ public class ActivityLogin extends AppCompatActivity {
 
                 loginUserAccount();
 
+
             }
         });
 
@@ -82,6 +83,7 @@ public class ActivityLogin extends AppCompatActivity {
                             = new Intent(ActivityLogin.this,
                             ActivityMenuPrincipal.class);
                     startActivity(intent);
+                    finish();
                 } else {
 
                     // sign-in failed

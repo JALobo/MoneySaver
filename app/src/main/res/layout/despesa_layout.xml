@@ -28,6 +28,7 @@
         android:gravity="center"
         android:hint="descrição da despesa"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/custoDespesa"
         android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:hint="Custo" />
+        android:hint="Custo"
+        android:textSize="16sp" />
 
 
 </LinearLayout>

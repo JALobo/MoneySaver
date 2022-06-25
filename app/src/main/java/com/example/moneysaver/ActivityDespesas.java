@@ -31,6 +31,8 @@ public class ActivityDespesas extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Expenses> expenses;
     private HelperAdapter helperAdapter;
+
+    private Double valorTotalMonetario;
     // creating a variable
     // for firebasefirestore.
     private FirebaseFirestore db;
@@ -76,6 +78,8 @@ public class ActivityDespesas extends AppCompatActivity {
             }
         });
 
+        popularTOtalMonetario();//Caso se abra esta atividade antes do total monetario
+
     }
 
     private void goActivityGerirDespesas() {
@@ -94,11 +98,11 @@ public class ActivityDespesas extends AppCompatActivity {
         txtTotalInserido.setText(SaveDividaETotal.getTotalFormated());
         expenses.clear();
         totalValDespesa = 0.0;
-        //valorFinal = 0.0;
+
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         String uid = fAuth.getCurrentUser().getUid();
         db = FirebaseFirestore.getInstance();
-        db.collection("Expenses").whereEqualTo("userId",uid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Expenses").whereEqualTo("userId", uid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 // after getting the data we are calling on success method
@@ -127,7 +131,7 @@ public class ActivityDespesas extends AppCompatActivity {
                     }
                     SaveDividaETotal.setDivida(totalValDespesa.toString());
                     txtTotalDespesas.setText(SaveDividaETotal.getDividaFormated());
-                   //valorFinal = Double.parseDouble(SaveDividaETotal.getTotal()) - totalValDespesa;
+                    //valorFinal = Double.parseDouble(SaveDividaETotal.getTotal()) - totalValDespesa;
                     //txtTotalFinal.setText(valorFinal.toString());
                     txtTotalFinal.setText(SaveDividaETotal.getValorFinal());
                     // after adding the data to recycler view.
@@ -148,7 +152,33 @@ public class ActivityDespesas extends AppCompatActivity {
                 Toast.makeText(ActivityDespesas.this, "Falha ao descarregar dados.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+
+    //este método só é chamado uma vez no create. feito caso se vá a esta atividade antes do total monetario
+    public void popularTOtalMonetario() {
+
+        db = FirebaseFirestore.getInstance();
+        valorTotalMonetario = 0.0;
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
+        db.collection("TotalMonetario").whereEqualTo("userId", uid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    loadingPB.setVisibility(View.GONE);
+                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                    for (DocumentSnapshot d : list) {
+
+                        TotalMonetario tM = d.toObject(TotalMonetario.class);
+                        valorTotalMonetario += Double.parseDouble(tM.getTotalMonetario());
+
+                    }
+                    SaveDividaETotal.setTotal(valorTotalMonetario.toString());
+                    txtTotalInserido.setText(SaveDividaETotal.getTotalFormated());
+                }
+            }
+        });
 
     }
 }

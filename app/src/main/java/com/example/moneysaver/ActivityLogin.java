@@ -73,7 +73,7 @@ public class ActivityLogin extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),
-                                    "Login successful!!",
+                                    "Login efetuado com sucesso!!",
                                     Toast.LENGTH_LONG)
                             .show();
 
@@ -88,7 +88,7 @@ public class ActivityLogin extends AppCompatActivity {
 
                     // sign-in failed
                     Toast.makeText(getApplicationContext(),
-                                    "Login failed!!",
+                                    "O seu login falhou!!",
                                     Toast.LENGTH_LONG)
                             .show();
                 }

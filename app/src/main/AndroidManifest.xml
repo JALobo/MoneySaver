@@ -14,9 +14,13 @@
         android:theme="@style/Theme.MoneySaver">
         <activity
             android:name=".ActivityUpdateTotalMonetario"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".IntroduzirValores"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ActivityGerirDespesas"

@@ -6,18 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.text.TextUtils;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityMenuPrincipal extends AppCompatActivity {
 
-    Button totalMonetario, despesas, poupancas;
+    Button totalMonetario, despesas, logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        totalMonetario = findViewById(R.id.btnPoupancas);
-        despesas = findViewById(R.id.btnTotalMonetario);
-        poupancas = findViewById(R.id.btnDespesas);
+        totalMonetario = findViewById(R.id. btnTotalMonetario);
+        despesas = findViewById(R.id.btnDespesas);
+        logoutBtn = findViewById(R.id.idBtnLogout);
 
         totalMonetario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,11 +47,11 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
             }
         });
 
-        poupancas.setOnClickListener(new View.OnClickListener() {
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //Intent das poupancas
-                goActivityPopancas();
+            public void onClick(View v) {
+                //Intent de logout
+                goMainActivity();
             }
         });
 
@@ -56,9 +68,10 @@ public class ActivityMenuPrincipal extends AppCompatActivity {
         startActivity(despesas);
     }
 
-    private void goActivityPopancas() {
-        Intent popancas = new Intent(this, AtivityPoupancas.class);
-        startActivity(popancas);
+    private void goMainActivity() {
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+        finish();
     }
 
 }

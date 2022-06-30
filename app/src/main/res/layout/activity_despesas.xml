@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_principal"
     tools:context=".ActivityDespesas">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Inserido:"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/txtTotalInserido"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,25 +24,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="total"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/despesaList"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <!--Progress bar for showing loading screen-->
+        <ProgressBar
+            android:id="@+id/idProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+    </LinearLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -48,7 +65,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="129dp"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -56,29 +74,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Despesas:"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/txtTotalDespesas"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/txtTotalDespesas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="total"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtTotalFinal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="579dp" />
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -86,30 +107,55 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_begin="486dp"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.5"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnGerirDespesas"
+        android:id="@+id/btnAdicionarDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gerir Despesas"
+        android:text="Adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnVoltarEditDespesa"
+        app:layout_constraintEnd_toStartOf="@+id/btnVoltarDespesa"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
-        android:id="@+id/btnVoltarEditDespesa"
+        android:id="@+id/btnVoltarDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnGerirDespesas"
+        app:layout_constraintStart_toEndOf="@+id/btnAdicionarDespesa"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Restante: "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalFinal"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/txtTotalFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="total"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalDespesas" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

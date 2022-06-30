@@ -1,20 +1,40 @@
 package com.example.moneysaver;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Users {
+    // getter method for our id
+    public String getId() {
+        return id;
+    }
+
+    // setter method for our id
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // we are using exclude because
+    // we are not saving our id
+    @Exclude
+    private String id;
+
     private String email;
     private String name;
     private String username;
     private String password;
-    private Map expenses;
+    private double moneyToSave;
+    private ArrayList<Expenses> expenses;
 
-    public Users(String email, String name, String username, String password, Map expenses) {
+    public Users(String email, String name, String username, String password, double moneyToSave, ArrayList<Expenses> expenses) {
         this.email = email;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.moneyToSave = moneyToSave;
         this.expenses = expenses;
     }
 
@@ -54,11 +74,21 @@ public class Users {
         this.password = password;
     }
 
-    public Map getExpenses() {
+    public double getMoneyToSave() {
+        return moneyToSave;
+    }
+
+    public void setMoneyToSave(double moneyToSave) {
+        this.moneyToSave = moneyToSave;
+    }
+
+    public ArrayList<Expenses> getExpenses() {
         return expenses;
     }
 
-    public void setExpenses(Map expenses) {
+    public void setExpenses(ArrayList<Expenses> expenses) {
         this.expenses = expenses;
     }
+
+    //TODO adicionar metodods que permitam retirar informação do user
 }

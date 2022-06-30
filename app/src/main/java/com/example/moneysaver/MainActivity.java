@@ -10,10 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     Button botaoLogin, botaoRegistar ;
     BroadcastReceiver broadcastReceiver;
+    //Users user; //Variavel de teste
+    Expenses exp;
+
+    //Fuck Android studio
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void goActivityLogin(){
+    private void goActivityLogin() {
         Intent login = new Intent(this, ActivityLogin.class);
         startActivity(login);
-
     }
 
-
-    private void goActivityRegister(){
-        Intent register = new Intent(this, ActivityRegisto.class);
-        startActivity(register);
+    private void goActivityRegister() {
+        Intent registo = new Intent(this, ActivityRegisto.class);
+        startActivity(registo);
     }
+
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_principal"
-    tools:context=".ActivityGerirDespesas">
+    tools:context=".ActivityUpdateDespesa">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -19,17 +19,18 @@
 
 
     <Button
-        android:id="@+id/btnAdicionar"
+        android:id="@+id/btnAtualizarDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar Despesa"
+        android:text="Atualizar Despesa"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnApagarDespesa"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <Button
-        android:id="@+id/btnVoltarAdicionarDespesa"
+        android:id="@+id/btnVoltarAtualizarDespesa"
         android:layout_width="176dp"
         android:layout_height="53dp"
         android:text="Voltar"
@@ -48,7 +49,7 @@
         app:layout_constraintGuide_percent="0.8" />
 
     <EditText
-        android:id="@+id/editTextAdicionarNome"
+        android:id="@+id/editTextUpdateNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -56,13 +57,13 @@
         android:hint="Nome"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextAdicionarDescricao"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateDescicao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAdicionarDescricao"
+        android:id="@+id/editTextUpdateDescicao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -70,13 +71,13 @@
         android:hint="Descrição"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextAdicionarCusto"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateCusto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAdicionarNome" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateNome" />
 
     <EditText
-        android:id="@+id/editTextAdicionarCusto"
+        android:id="@+id/editTextUpdateCusto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -87,5 +88,17 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAdicionarDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateDescicao" />
+
+    <Button
+        android:id="@+id/btnApagarDespesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apagar"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnAtualizarDespesa"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
